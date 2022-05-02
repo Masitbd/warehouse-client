@@ -1,10 +1,14 @@
 import React from 'react';
+import Carusal from '../Carusa/Carusal';
+
 
 const Home = () => {
     return (
-        <div>
-          <h2>This is home components</h2>  
-        </div>
+        <div className="">
+         <Carusal />
+        
+</div>
+
     );
 };
 
