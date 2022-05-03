@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../ firebase.init";
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [user, loading, error] = useAuthState(auth);
+
+    const logout = () => {
+      signOut(auth);
+    };
     return (
         <div>
         <nav className="bg-gray-800">
@@ -47,9 +55,15 @@ const Header = () => {
                        Calender
                    </Link>
   
-                   <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/login">
-                       Login
-                   </Link>
+                   { !user ?
+                    <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/login">
+                    Login
+                </Link>
+                    :
+                    <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" onClick={logout} as={Link} to="/login">
+                    LogOut
+                </Link>
+                   }
                   </div>
                 </div>
               </div>
