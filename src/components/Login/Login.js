@@ -17,12 +17,9 @@ const Login = () => {
     const [SignInWithGithub, githubUser, githubError] = useSignInWithGithub(auth);
     const [signInWithFacebook, facebookUser, facebookError] = useSignInWithFacebook(auth);
 
-
-
-
-
-  let from = location.state?.from?.pathname || "/";
-      if (error) {
+   let from = location.state?.from?.pathname || "/";
+   
+   if (error) {
         return (
           <div>
             <p>Error: {error.message}</p>

@@ -7,6 +7,8 @@ import Blogs from './components/Blogs/Blogs';
 import About from './components/About/About';
 import Login from './components/Login/Login';
 import Register from './Register/Register';
+import ItemDetails from './components/ItemDetails/ItemDetails';
+import RequireAuth from './components/RequireAuth/RequireAuth';
 
 function App() {
   return (
@@ -19,6 +21,13 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />}/>
+        <Route path='/itemdetails/:itemid'
+        element={
+          <RequireAuth>
+            <ItemDetails />
+          </RequireAuth>
+        }
+        />
         
       </Routes>
       
