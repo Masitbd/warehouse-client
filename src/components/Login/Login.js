@@ -1,9 +1,10 @@
 import React, { useRef } from 'react';
 import { BsGoogle, BsGithub, BsFacebook } from "react-icons/bs";
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithFacebook, useSignInWithGithub } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../ firebase.init';
 import { signInWithEmailAndPassword} from 'firebase/auth';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 
 
 const Login = () => {
@@ -12,6 +13,12 @@ const Login = () => {
     const inputPassword= useRef('')
     const [user, loading, error] = useAuthState(auth);
     const location = useLocation();
+    const [SignInWithGoogle, googleUser, GoogleError] = useSignInWithGoogle(auth);
+    const [SignInWithGithub, githubUser, githubError] = useSignInWithGithub(auth);
+    const [signInWithFacebook, facebookUser, facebookError] = useSignInWithFacebook(auth);
+
+
+
 
 
   let from = location.state?.from?.pathname || "/";
@@ -28,7 +35,11 @@ const Login = () => {
       if (user) {
         navigate(from, { replace: true });
       }
-      
+      if (googleUser || githubUser || facebookUser) {
+          navigate('/')
+          
+      }
+     
       const handleSubmit = (e)=>{
         e.preventDefault()
         const email = inputEmail.current.value
@@ -50,9 +61,9 @@ const Login = () => {
                 <p className="mt-2 text-sm text-gray-600">Please sign in to your account</p>
             </div>
             <div className="flex flex-row justify-center items-center space-x-3">
-               <span className="w-11 h-11 items-center justify-center inline-flex rounded-full font-bold text-lg  text-white  bg-blue-900 hover:shadow-lg cursor-pointer transition ease-in duration-300"><BsGoogle /></span>
-              <span className="w-11 h-11 items-center justify-center inline-flex rounded-full font-bold text-lg  text-white  bg-blue-900 hover:shadow-lg cursor-pointer transition ease-in duration-300"><BsGithub /></span>
-              <span className="w-11 h-11 items-center justify-center inline-flex rounded-full font-bold text-lg  text-white  bg-blue-900 hover:shadow-lg cursor-pointer transition ease-in duration-300"><BsFacebook /></span>
+               <span onClick={()=>SignInWithGoogle()} className="w-11 h-11 items-center justify-center inline-flex rounded-full font-bold text-lg  text-white  bg-blue-900 hover:shadow-lg cursor-pointer transition ease-in duration-300"><BsGoogle /></span>
+              <span onClick={()=>SignInWithGithub()} className="w-11 h-11 items-center justify-center inline-flex rounded-full font-bold text-lg  text-white  bg-blue-900 hover:shadow-lg cursor-pointer transition ease-in duration-300"><BsGithub /></span>
+              <span onClick={()=>signInWithFacebook()} className="w-11 h-11 items-center justify-center inline-flex rounded-full font-bold text-lg  text-white  bg-blue-900 hover:shadow-lg cursor-pointer transition ease-in duration-300"><BsFacebook /></span>
 
             </div>
             <div className="flex items-center justify-center space-x-2">
