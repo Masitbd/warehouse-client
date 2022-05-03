@@ -1,27 +1,27 @@
 import React, { useRef } from 'react';
-import { BsGoogle, BsGithub, BsFacebook } from "react-icons/bs";
-import { useAuthState, useSignInWithFacebook, useSignInWithGithub } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import auth from '../../ firebase.init';
-import { signInWithEmailAndPassword} from 'firebase/auth';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { BsGoogle, BsGithub, BsFacebook } from "react-icons/bs";
+import auth from '../ firebase.init';
 
-
-const Login = () => {
+const Register = () => {
     const navigate = useNavigate()
     const inputEmail = useRef('')
     const inputPassword= useRef('')
-    const [user, loading, error] = useAuthState(auth);
+  // const [user, loading, error] = useAuthState(auth);
     const location = useLocation();
     const [SignInWithGoogle, googleUser, GoogleError] = useSignInWithGoogle(auth);
     const [SignInWithGithub, githubUser, githubError] = useSignInWithGithub(auth);
-    const [signInWithFacebook, facebookUser, facebookError] = useSignInWithFacebook(auth);
+    const [SignInWithFacebook, facebookUser, facebookError] = useSignInWithFacebook(auth);
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+      ] = useCreateUserWithEmailAndPassword(auth);
 
 
-
-
-
-  let from = location.state?.from?.pathname || "/";
+    let from = location.state?.from?.pathname || "/";
       if (error) {
         return (
           <div>
@@ -48,25 +48,25 @@ const Login = () => {
         const email = inputEmail.current.value
         const password = inputPassword.current.value
 
-        signInWithEmailAndPassword(auth, email, password)
+        createUserWithEmailAndPassword( email, password)
        }
 
-       
+
     return (
         <div className="relative min-h-screen flex justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 bg-no-repeat bg-cover  items-center"
         style={{}}>
         <div className="absolute bg-black opacity-60 inset-0 z-0"></div>
-        <div className="max-w-md w-full space-y-8 p-10 bg-white rounded-xl z-10">
+        <div className="max-w-md w-full space-y-8 p-10 bg-red-100 rounded-xl z-10">
             <div className="text-center">
                 <h2 className="mt-6 text-3xl font-bold text-gray-900">
                     Welcom Back!
                 </h2>
-                <p className="mt-2 text-sm text-gray-600">Please sign in to your account</p>
+                <p className="mt-2 text-sm text-gray-600">Register New User</p>
             </div>
             <div className="flex flex-row justify-center items-center space-x-3">
                <span onClick={()=>SignInWithGoogle()} className="w-11 h-11 items-center justify-center inline-flex rounded-full font-bold text-lg  text-white  bg-blue-900 hover:shadow-lg cursor-pointer transition ease-in duration-300"><BsGoogle /></span>
               <span onClick={()=>SignInWithGithub()} className="w-11 h-11 items-center justify-center inline-flex rounded-full font-bold text-lg  text-white  bg-blue-900 hover:shadow-lg cursor-pointer transition ease-in duration-300"><BsGithub /></span>
-              <span onClick={()=>signInWithFacebook()} className="w-11 h-11 items-center justify-center inline-flex rounded-full font-bold text-lg  text-white  bg-blue-900 hover:shadow-lg cursor-pointer transition ease-in duration-300"><BsFacebook /></span>
+              <span onClick={()=>SignInWithFacebook()} className="w-11 h-11 items-center justify-center inline-flex rounded-full font-bold text-lg  text-white  bg-blue-900 hover:shadow-lg cursor-pointer transition ease-in duration-300"><BsFacebook /></span>
 
             </div>
             <div className="flex items-center justify-center space-x-2">
@@ -112,18 +112,18 @@ const Login = () => {
                 <div>
                     <button type="submit" className="w-full flex justify-center bg-indigo-500 text-gray-100 p-4  rounded-full tracking-wide
                                     font-semibold  focus:outline-none focus:shadow-outline hover:bg-indigo-600 shadow-lg cursor-pointer transition ease-in duration-300">
-                        Sign in
+                        Register
                     </button>
                 </div>
                 <p className="flex flex-col items-center justify-center mt-10 text-center text-md text-gray-500">
-                    <span>Don't have an account?</span>
+                    <span>Already registered user?</span>
                    
                     <Link
                     onClick={navigateRegister}
                     className="text-indigo-500 hover:text-indigo-500no-underline hover:underline cursor-pointer transition ease-in duration-300"
-                   to='/register'
+                   to='/login'
                    >
-                        Sign up
+                        Go to login page
                     </Link>
                 </p>
             </form>
@@ -132,4 +132,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
