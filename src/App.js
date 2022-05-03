@@ -9,6 +9,8 @@ import Login from './components/Login/Login';
 import Register from './Register/Register';
 import ItemDetails from './components/ItemDetails/ItemDetails';
 import RequireAuth from './components/RequireAuth/RequireAuth';
+import NotFound from './components/NotFound/NotFound';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -28,9 +30,11 @@ function App() {
           </RequireAuth>
         }
         />
+
+        <Route path='*' element={<NotFound />} />
         
       </Routes>
-      
+      <Footer />
     </div>
   );
 }
