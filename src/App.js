@@ -11,6 +11,7 @@ import ItemDetails from './components/ItemDetails/ItemDetails';
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import NotFound from './components/NotFound/NotFound';
 import Footer from './components/Footer/Footer';
+import AddItem from './components/AddItem/AddItem';
 
 function App() {
   return (
@@ -27,6 +28,13 @@ function App() {
         element={
           <RequireAuth>
             <ItemDetails />
+          </RequireAuth>
+        }
+        />
+         <Route path='/additem'
+        element={
+          <RequireAuth>
+            <AddItem />
           </RequireAuth>
         }
         />

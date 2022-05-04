@@ -6,7 +6,7 @@ const NotFound = () => {
     <div>
       <div className="d-flex">
         <a className="button" href="./home">
-          <i class="icon-home"></i> Go back in initial page, is better.
+          <i className="icon-home"></i> Go back in initial page, is better.
         </a>
       </div>
       <div className="mb-5">

@@ -5,7 +5,8 @@ const Items = () => {
     const [items, setItems] = useState([])
 
     useEffect(()=>{
-        fetch('items.json')
+       fetch('http://localhost:5000/item')
+        //fetch('items.json')
         .then(response=>response.json())
         .then(data => setItems(data))
     },[])
@@ -13,9 +14,9 @@ const Items = () => {
     return (
        <div className='container px-8 mx-auto'>
            <h2 className='text-3xl text-center my-5 font-bold text-orange-600'>Items List</h2>
-            <div class="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 gap-4">
            {
-               items.map(item=><Item item={item} />)
+               items.map(item=><Item key={item._id} item={item} />)
            }
         </div>
        </div>
