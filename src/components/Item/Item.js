@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import UpdateItem from '../UpdateItem/UpdateItem'
 
-const Item = ({item}) => {
+const Item = ({item, setIsReload, isReload}) => {
     const {_id, name, picture, description} = item
     const navigate = useNavigate()
 
@@ -17,6 +18,10 @@ const Item = ({item}) => {
             <button onClick={()=>handleItemDetails(_id)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Details
            </button>
+          {/*  <button onClick={()=>handleItemDetails(_id)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Update
+           </button> */}
+           <UpdateItem setIsReload={setIsReload} isReload={isReload} id={item._id}/>
           </div>
       
     );
