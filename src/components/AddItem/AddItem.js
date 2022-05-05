@@ -27,7 +27,7 @@ const AddItem = () => {
         <input className='input-border my-2' placeholder='Enter item name' {...register("name", { required: true, maxLength: 20 })} />
         <input className='input-border' placeholder='Enter image url link' {...register("picture")} />
         <textarea className='w-64 input-border my-2' placeholder='Enter description' {...register("description", { required: true, maxLength: 200 })} />
-        <input className='bg-red-300' type="submit" value='Add item' />
+        <input className='bg-red-300 cursor-pointer ' type="submit" value='Add item' />
     </form>
    
    </div>
