@@ -13,7 +13,7 @@ const Header = () => {
       signOut(auth);
     };
     return (
-        <div>
+        
         <nav className="bg-gray-800">
           <div className=" mx-auto px-4 sm:px-6 lg:px-8 container">
             <div className="flex items-center justify-between h-16">
@@ -50,10 +50,17 @@ const Header = () => {
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">
                    
-  
-                  <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/home">
-                       Calender
+                  {
+                    user &&
+                 <>
+                  <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/additem">
+                       Add Item
                    </Link>
+                   <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/manageitem">
+                   Manage Item
+               </Link>
+                 </>
+                   }
   
                    { !user ?
                     <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/login">
@@ -136,20 +143,33 @@ const Header = () => {
                        About me
                    </Link>
   
-                   <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/home">
-                       Calender
+                   {
+                    user &&
+                 <>
+                  <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/additem">
+                       Add Item
                    </Link>
+                   <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/manageitem">
+                   Manage Item
+               </Link>
+                 </>
+                   }
   
-                   <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/login">
-                       Login
-                   </Link>
+              { !user ?
+                    <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" to="/login">
+                    Login
+                </Link>
+                    :
+                    <Link className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium" onClick={logout} as={Link} to="/login">
+                    LogOut
+                </Link>
+                   }
                 </div>
               </div>
             )}
           </Transition>
         </nav>
   
-      </div>
     );
   }
   

@@ -12,6 +12,7 @@ import RequireAuth from './components/RequireAuth/RequireAuth';
 import NotFound from './components/NotFound/NotFound';
 import Footer from './components/Footer/Footer';
 import AddItem from './components/AddItem/AddItem';
+import ManageItems from './components/ManageItems/ManageItems';
 
 function App() {
   return (
@@ -38,10 +39,15 @@ function App() {
           </RequireAuth>
         }
         />
-
-        <Route path='*' element={<NotFound />} />
-        
-      </Routes>
+        <Route path='/manageitem'
+        element={
+          <RequireAuth>
+            <ManageItems />
+          </RequireAuth>
+        }
+        />
+     <Route path='*' element={<NotFound />} />
+        </Routes>
       <Footer />
     </div>
   );
