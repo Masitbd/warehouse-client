@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from "react-modal";
 
 const customStyles = {
@@ -16,9 +16,17 @@ const customStyles = {
   Modal.setAppElement("#root");
 
   export default function UpdateItem({ id, setIsReload, isReload }) {
-    console.log(id)
+  
     let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [item, setItem] = useState({})
+
+  useEffect(()=>{
+    const uri = `http://localhost:5000/item/${id}`
+    fetch(uri)
+    .then(res => res.json())
+    .then(data => setItem(data))
+  },[])
 
   function openModal() {
     setIsOpen(true);
@@ -40,7 +48,6 @@ const customStyles = {
   
     console.log(name, description);
     const uri = `http://localhost:5000/item/${id}`
-    console.log(uri)
     fetch(uri, {
       method: "PUT",
       headers: {
@@ -81,6 +88,7 @@ const customStyles = {
                 placeholder="name"
                 aria-label="name"
                 name="name"
+                defaultValue={item.name}
               />
             </div>
 
@@ -90,6 +98,7 @@ const customStyles = {
                 aria-label="With textarea"
                 placeholder='description'
                 name="textData"
+                defaultValue={item.description}
               ></textarea>
             </div>
             <div className="mt-4">
