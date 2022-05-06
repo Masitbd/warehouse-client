@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Modal from "react-modal";
-
+import { FaWindowClose } from "react-icons/fa";
 const customStyles = {
     content: {
       top: "50%",
       left: "50%",
       right: "auto",
+      width:'400px',
+      backgroundColor: 'rgba(255, 191, 71, 0.5)',
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
@@ -58,6 +60,8 @@ const customStyles = {
     })
       .then((res) => res.json())
       .then((data) => setIsReload(!isReload));
+      event.target.name.value=''
+      event.target.textData.value=''
   };
 
     return (
@@ -72,22 +76,23 @@ const customStyles = {
         Update
       </button>
       <Modal
-        isOpen={modalIsOpen}
+       isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <button onClick={closeModal} className="btn btn-sm btn-warning">
-          close
+        <button onClick={closeModal} className=''>
+        
+              <FaWindowClose className='-w-16 -mt-6' />
         </button>
-        <div>Please insert your text</div>
-        <div className=" p-3 color-4D4C7D">
+        <div className='text-blue-500 font-bold text-2xl'>Update Record Form</div>
+        <div className=" ">
           <form className="container " onSubmit={handleUpdate}>
             <div className="input-group mb-3 mt-5">
               <input
                 type="text"
-                className="form-control"
+                className="form-control border border-red-500"
                 placeholder="name"
                 aria-label="name"
                 name="name"
@@ -97,7 +102,7 @@ const customStyles = {
 
             <div className="input-group">
               <textarea
-                className="form-control"
+                className="form-control border border-red-500 w-60 h-60"
                 aria-label="With textarea"
                 placeholder='description'
                 name="textData"
@@ -105,7 +110,7 @@ const customStyles = {
               ></textarea>
             </div>
             <div className="mt-4">
-              <input type="submit" value="submit" className="btn btn-info" />
+              <input type="submit" value="Submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded" />
             </div>
           </form>
         </div>
