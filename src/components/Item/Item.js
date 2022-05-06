@@ -11,10 +11,10 @@ const Item = ({item, setIsReload, isReload}) => {
     }
     return (
       
-          <div className='shadow-2xl border-2'>
+          <div className='shadow-2xl border-2 h-96'>
           <img className='h-60 w-full' src={picture} alt="" />
             <p>{name}</p>
-            <p>{description}</p>
+            <p>{description.substr(0,200)}</p>
             <button onClick={()=>handleItemDetails(_id)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Details
            </button>

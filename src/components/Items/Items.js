@@ -6,7 +6,7 @@ const Items = () => {
     const [isReload, setIsReload] = useState(false);
 
     useEffect(()=>{
-       fetch('http://localhost:5000/item')
+       fetch('https://limitless-caverns-64590.herokuapp.com/item')
         //fetch('items.json')
         .then(response=>response.json())
         .then(data => setItems(data))

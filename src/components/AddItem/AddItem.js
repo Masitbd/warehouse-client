@@ -6,7 +6,7 @@ import './AddItem.css'
 const AddItem = () => {
    const { register, handleSubmit } = useForm();
   const onSubmit = data => {
-   fetch(`http://localhost:5000/item`,{
+   fetch(`https://limitless-caverns-64590.herokuapp.com/item`,{
        method: 'POST',
        headers: {
           'content-type': 'application/json'

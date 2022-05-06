@@ -5,7 +5,7 @@ const ManageItems = () => {
     const [items, setItems] = useState([])
 
     useEffect(()=>{
-       fetch('http://localhost:5000/item')
+       fetch('https://limitless-caverns-64590.herokuapp.com/item')
         //fetch('items.json')
         .then(response=>response.json())
         .then(data => setItems(data))
@@ -14,7 +14,7 @@ const ManageItems = () => {
     const handleDeleteItem=(id)=>{
         const proced = window.confirm('Are you sure')
         if(proced){
-            fetch(`http://localhost:5000/item/${id}`,{
+            fetch(`https://limitless-caverns-64590.herokuapp.com/item/${id}`,{
                 method: 'DELETE'
             })
             .then(res => res.json())

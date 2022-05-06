@@ -6,7 +6,7 @@ const ItemDetails = () => {
     const {itemid} = useParams()
    
     useEffect(()=>{
-        fetch(`http://localhost:5000/item/${itemid}`)
+        fetch(`https://limitless-caverns-64590.herokuapp.com/item/${itemid}`)
         .then(response =>response.json())
         .then(data=> setitem(data))
     },[])

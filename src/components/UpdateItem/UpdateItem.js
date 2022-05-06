@@ -22,7 +22,7 @@ const customStyles = {
   const [item, setItem] = useState({})
 
   useEffect(()=>{
-    const uri = `http://localhost:5000/item/${id}`
+    const uri = `https://limitless-caverns-64590.herokuapp.com/item/${id}`
     fetch(uri)
     .then(res => res.json())
     .then(data => setItem(data))
@@ -47,7 +47,7 @@ const customStyles = {
     const description = event.target.textData.value;
   
     console.log(name, description);
-    const uri = `http://localhost:5000/item/${id}`
+    const uri = `https://limitless-caverns-64590.herokuapp.com/item/${id}`
     fetch(uri, {
       method: "PUT",
       headers: {
@@ -61,7 +61,7 @@ const customStyles = {
 
     return (
         <div>
-             <button onClick={openModal} className="color-801336 btn-sm btn">
+             <button onClick={openModal} className="relative -top-8 left-24  bottom-0  color-801336 btn-sm btn">
     
             {/*  position: relative;
                left: 120px;
