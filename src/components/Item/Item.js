@@ -11,7 +11,7 @@ const Item = ({item, setIsReload, isReload}) => {
     }
     return (
       
-          <div className='shadow-2xl border-2 h-96'>
+          <div className='shadow-2xl border-2 h-[400px]'>
           <img className='h-60 w-full' src={picture} alt="" />
             <p>{name}</p>
             <p>{description.substr(0,200)}</p>

@@ -47,7 +47,8 @@ const customStyles = {
     const description = event.target.textData.value;
   
     console.log(name, description);
-    const uri = `https://limitless-caverns-64590.herokuapp.com/item/${id}`
+    //const uri = `https://limitless-caverns-64590.herokuapp.com/item/${id}`
+    const uri=`http://localhost:5000/item/${id}`
     fetch(uri, {
       method: "PUT",
       headers: {
@@ -61,7 +62,9 @@ const customStyles = {
 
     return (
         <div>
-             <button onClick={openModal} className="relative -top-8 left-24  bottom-0  color-801336 btn-sm btn">
+             <button onClick={openModal} className="relative -top-[40px] left-[120px]  bottom-0  color-801336 btn-sm btn
+             bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded
+             ">
     
             {/*  position: relative;
                left: 120px;
