@@ -15,7 +15,7 @@ const Item = ({item, setIsReload, isReload}) => {
           <img className='h-60 w-full' src={picture} alt="" />
             <p>{name}</p>
             <p>{description.substr(0,200)}</p>
-            <button onClick={()=>handleItemDetails(_id)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button onClick={()=>handleItemDetails(_id)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 my-2 px-4 rounded">
             Details
            </button>
           {/*  <button onClick={()=>handleItemDetails(_id)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">

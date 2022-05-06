@@ -62,7 +62,7 @@ const customStyles = {
 
     return (
         <div>
-             <button onClick={openModal} className="relative -top-[40px] left-[120px]  bottom-0  color-801336 btn-sm btn
+             <button onClick={openModal} className="relative -top-[47px] left-[120px]  bottom-0  color-801336 btn-sm btn
              bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded
              ">
     
