@@ -26,15 +26,16 @@ const ManageItems = () => {
         }
       }
     return (
-       <div>
+       <div className='my-6 px-8'>
            {
                items.map(item=>{
                 return <table className="table-fixed container px-8 mx-auto">
                    <tbody>
-                        <tr>
-                            <td className="border  w-1/4">{item.name}</td>
-                            <td className="border w-2/4">{item.description}</td>
-                            <td onClick={()=>handleDeleteItem(item._id)} className="border cursor-pointer  w-1/4"><BsTrash /></td>
+                        <tr className='bg-slate-300'>
+                            <td className="border pl-2 w-1/4">{item.name}</td>
+                            <td className="border pl-2 w-2/4">{item.description}</td>
+                            <td onClick={()=>handleDeleteItem(item._id)}
+                            className="border px-2 text-red-500 cursor-pointer  w-1/4"><BsTrash /></td>
                         </tr>
                        
                     </tbody>

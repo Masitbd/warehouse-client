@@ -1,10 +1,9 @@
 import React from "react";
 
 import { HiLocationMarker } from "react-icons/hi";
-import { HiBookmark, HiMail } from "react-icons/hi";
+import { HiMail } from "react-icons/hi";
 import { HiPhone } from "react-icons/hi";
 
-import "./Foorer.css";
 
 const Footer = () => {
   return (
