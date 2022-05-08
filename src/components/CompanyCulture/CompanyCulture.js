@@ -6,7 +6,7 @@ import { FaDeezer } from "react-icons/fa";
 
 const CompanyCulture = () => {
     return (
-        <div className='grid grid-cols-4 container py-16 px-8 mx-auto my-8 bg-gray-300 rgba(240,240,240,0.95)'>
+        <div className='grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 container py-16 px-8 mx-auto my-8 bg-gray-300 rgba(240,240,240,0.95)'>
            <div className='text-center'>
                <FaChartBar className='text-6xl mx-auto' />
                <h2 className='text-2xl text-red-700 m-2'>Results Driven</h2>
