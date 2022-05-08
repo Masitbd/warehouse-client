@@ -6,8 +6,8 @@ import './AddItem.css'
 const AddItem = () => {
    const { register, handleSubmit } = useForm();
   const onSubmit = data => {
-    const uri=`http://localhost:5000/item`
-    //const uri=`https://limitless-caverns-64590.herokuapp.com/item`
+   // const uri=`http://localhost:5000/item`
+    const uri=`https://limitless-caverns-64590.herokuapp.com/item`
    fetch(uri,{
        method: 'POST',
        headers: {

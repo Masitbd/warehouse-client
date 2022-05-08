@@ -6,8 +6,8 @@ const Items = () => {
     const [isReload, setIsReload] = useState(false);
 
     useEffect(()=>{
-        //const uri = 'https://limitless-caverns-64590.herokuapp.com/item'
-        const uri=`http://localhost:5000/item`
+        const uri = 'https://limitless-caverns-64590.herokuapp.com/item'
+        //const uri=`http://localhost:5000/item`
        fetch(uri)
        
         //fetch('items.json')

@@ -49,8 +49,8 @@ const customStyles = {
     const description = event.target.textData.value;
   
     console.log(name, description);
-    //const uri = `https://limitless-caverns-64590.herokuapp.com/item/${id}`
-    const uri=`http://localhost:5000/item/${id}`
+    const uri = `https://limitless-caverns-64590.herokuapp.com/item/${id}`
+    //const uri=`http://localhost:5000/item/${id}`
     fetch(uri, {
       method: "PUT",
       headers: {
